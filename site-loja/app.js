@@ -3,7 +3,7 @@ function fnMontarCardProduto(produto) {
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-3">
                 <div class="card">
                     <img src="${produto.foto}"
-                        class="card-img-top" alt="${produto.nome}">
+                        class="card-img-top" style="width:100%; height:300px; object-fit:cover; " alt="${produto.nome}">
                     <div class="card-body">
                         <h5 class="card-title">${produto.titulo}</h5>
                         <p class="card-text">${produto.descricao}</p>
