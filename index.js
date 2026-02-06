@@ -62,6 +62,14 @@ app.get("/produtos", function (req, res){
     })
 })
 
+app.get("/produtos/:categoria", function (req,res){
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    const categoria = req.params.categoria
+    conexao.query(`SELECT * FROM produtos where categoria='${categoria}'`, function (erro, dados, campos){
+        res.send(dados)
+    })
+})
+
 app.get("/unidades", function (req, res){
     res.setHeader('Access-Control-Allow-Origin', '*')
 
