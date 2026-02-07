@@ -17,8 +17,8 @@
         <div class="container-fluid">
             <div class="navbar-system justify-content-between d-flex">
                 <a class="navbar-brand h1-navbar" href="#">Loja do Zé</a>
-                <button class="navbar-toggler me-4 mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button class="navbar-toggler me-4 mt-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -32,21 +32,22 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 list-group">
                         <li class="nav-item">
-                            <a class="nav-link active list-group-item" aria-current="page" href="#">Todos os produtos</a>
+                            <a class="nav-link" aria-current="page" href="#">Todos os
+                                produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link list-group-item" href="produtos.html?categoria=tenis">Tênis</a>
+                            <a class="nav-link" href="produtos.html?categoria=tenis">Tênis</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link list-group-item" href="produtos.html?categoria=camisetas">Camisetas</a>
+                            <a class="nav-link" href="produtos.html?categoria=camisetas">Camisetas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link list-group-item" href="produtos.html?categoria=oculos">Óculos</a>
+                            <a class="nav-link" href="produtos.html?categoria=oculos">Óculos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link list-group-item" href="unidades.html">Unidades</a>
+                            <a class="nav-link" href="unidades.html">Unidades</a>
                         </li>
-                    
+
                     </ul>
                 </div>
             </div>
@@ -68,15 +69,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="produtos.html">Todos os produtos</a>
+                        <a class="nav-link" aria-current="page" href="produtos.html">Todos os produtos</a>
                         <a class="nav-link" href="produtos.html?categoria=tenis">Tênis</a>
                         <a class="nav-link" href="produtos.html?categoria=camisetas">Camisetas</a>
                         <a class="nav-link" href="produtos.html?categoria=oculos">Óculos</a>
                         <a class="nav-link" href="unidades.html">Unidades</a>
                     </div>
                 </div>
+                <div class="dropdown btn-filtro">
+                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span id="nomeFiltrado"></span>
+                    </button>
+                    <ul class="dropdown-menu filtro">
+                        
+                    </ul>
+                </div>
             </div>
         </nav>
+
         <div class="row lista-produtos">
 
         </div>
