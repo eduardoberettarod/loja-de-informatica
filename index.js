@@ -1,5 +1,10 @@
 const express = require('express')
 const app = express()
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
 //necessario para permitir requisições de diferentes origens (dominios/servidores)
 const cors = require('cors')
 app.use(cors())
@@ -102,29 +107,42 @@ app.get("/unidades", function (req, res) {
 })
 
 app.post("/produtos/", function (req, res) {
-    const { titulo, preco, descricao, avaliacao, foto, categoria } = req.body;
-    conexao.query(`
-        INSERT INTO produtos(titulo, foto, descricao, preco, avaliacao, categoria)
-        values('${titulo}', '${foto}', '${descricao}', '${preco}', '${avaliacao}', '${categoria}')`),
-        function (erro, resultado) {
-            if (erro) {
-                res.json(erro);
-            }
-            res.send(resultado.insertId);
+
+    const data = req.body;
+    conexao.query('INSERT INTO produtos set ?', [data], function (erro, resultado) {
+        if (erro) {
+            res.json(erro);
         }
+        res.send(resultado.insertId)
+
+    });
 })
 
 app.post("/unidades/", function (req, res) {
-    const { nome_da_loja, foto, telefone, email, endereco, latitude, longitude } = req.body;
-    conexao.query(`
-        INSERT INTO unidades(nome_da_loja, foto, telefone, email, endereco, latitude, longitude)
-        values('${nome_da_loja}', '${foto}', '${telefone}', '${email}', '${endereco}', '${latitude}', '${longitude}')`),
-        function (erro, resultado) {
-            if (erro) {
-                res.json(erro);
-            }
-            res.send(resultado.insertId);
+    const data = req.body;
+    conexao.query('INSERT INTO unidades set ?', [data], function (erro, resultado) {
+        if (erro) {
+            res.json(erro);
         }
+        res.send(resultado.insertId)
+
+    });
+})
+
+app.post("/login/", function (req, res) {
+    const usuario = req.body.usuario
+    const senha = req.body.senha
+    conexao.query(`select * from usuarios where usuario = '${usuario}' and senha = '${senha}'`, function (erro, resultado, campos) {
+        if (erro) {
+            res.send(erro)
+        } else {
+            if (resultado.length > 0) {
+                res.status(200).send('Sucesso!')
+            } else {
+                res.status(401).send('Inválido')
+            }
+        }
+    })
 })
 
 app.listen(3000)

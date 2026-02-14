@@ -32,9 +32,12 @@
                                                     <h2 class="h1 mb-3 text-light">Cadastro de Unidades</h2>
                                                     <p class="lead fs-4 text-light opacity-75 mb-4 mb-xxl-5">Hora de
                                                         expandir a rede! Insira as informações da nova unidade
-                                                        abaixo. Capriche no nome e nos dados de localização — afinal, queremos
-                                                        que nossos clientes encontrem a gente facilmente. Assim que você clicar em salvar,
-                                                        a nova unidade será registrada no sistema e estará pronta para começar
+                                                        abaixo. Capriche no nome e nos dados de localização — afinal,
+                                                        queremos
+                                                        que nossos clientes encontrem a gente facilmente. Assim que você
+                                                        clicar em salvar,
+                                                        a nova unidade será registrada no sistema e estará pronta para
+                                                        começar
                                                         suas operações.</p>
                                                 </div>
                                             </div>
@@ -46,7 +49,8 @@
                                                 <form action="#" id="form-unidades">
                                                     <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
                                                         <div class="col-12">
-                                                            <label for="nome_da_loja" class="form-label">Nome da loja</label>
+                                                            <label for="nome_da_loja" class="form-label">Nome da
+                                                                loja</label>
                                                             <input type="text" class="form-control" id="nome_da_loja">
                                                         </div>
                                                         <div class="col-12 mt-4">
@@ -91,6 +95,19 @@
                 </div>
             </div>
         </section>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Cadastrada <i class="bi bi-check2-circle"></i></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Unidade cadastrada com sucesso!
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

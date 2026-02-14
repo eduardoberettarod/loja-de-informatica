@@ -32,6 +32,7 @@ function fnCadastrarUnidades() {
         .then(resposta => resposta.json())
         .then((dados) => {
             fnLimparCampos()
+            fnMostrarToast()
             console.log(dados)
         })
         .catch(erro => console.log(erro.message))
@@ -50,4 +51,9 @@ btn_salvar.addEventListener("click", function () {
     fnCadastrarUnidades()
 })
 
+const toastLiveExample = document.getElementById('liveToast2')
 
+function fnMostrarToast() {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    toastBootstrap.show()
+}
