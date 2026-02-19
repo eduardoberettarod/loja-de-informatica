@@ -129,6 +129,17 @@ app.post("/unidades/", function (req, res) {
     });
 })
 
+app.post("/registro/", function (req, res) {
+    const data = req.body;
+    conexao.query('INSERT INTO usuarios set ?', [data], function (erro, resultado) {
+        if (erro) {
+            res.json(erro);
+        }
+        res.send(resultado.insertId)
+
+    });
+})
+
 app.post("/login/", function (req, res) {
     const usuario = req.body.usuario
     const senha = req.body.senha
@@ -137,9 +148,9 @@ app.post("/login/", function (req, res) {
             res.send(erro)
         } else {
             if (resultado.length > 0) {
-                res.status(200).send('Sucesso!')
+                res.sendStatus(200)
             } else {
-                res.status(401).send('Inválido')
+                res.sendStatus(401)
             }
         }
     })
