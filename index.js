@@ -96,16 +96,6 @@ app.get("/produtos/:categoria/:ordem", function (req, res) {
 
 })
 
-
-app.get("/unidades", function (req, res) {
-    // res.setHeader('Access-Control-Allow-Origin', '*')
-
-    conexao.query("SELECT * FROM unidades", function (erro, lista_unidades, campos) {
-        console.log(lista_unidades);
-        res.send(lista_unidades)
-    })
-})
-
 app.post("/produtos/", function (req, res) {
 
     const data = req.body;
@@ -117,6 +107,25 @@ app.post("/produtos/", function (req, res) {
 
     });
 })
+
+// Read ONE = [ GET ] /produto
+app.get("/produto/:id", function (req, res) {
+    const id = req.params.id
+    conexao.query("SELECT * FROM produtos where id = ? ", [id],
+        function (erro, dados, campos) {
+            res.json(dados)
+        })
+})
+
+app.get("/unidades", function (req, res) {
+    // res.setHeader('Access-Control-Allow-Origin', '*')
+
+    conexao.query("SELECT * FROM unidades", function (erro, lista_unidades, campos) {
+        console.log(lista_unidades);
+        res.send(lista_unidades)
+    })
+})
+
 
 app.post("/unidades/", function (req, res) {
     const data = req.body;
