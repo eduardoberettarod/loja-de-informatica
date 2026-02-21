@@ -1,7 +1,7 @@
 function fnMontarTabelaProduto(produto) {
 
     let tabela = `
-        <tr>
+        <tr id="linha-${produto.id}">
             <td class="py-2">
                 <img src="${produto.foto}"
                     class="card-img-top rounded-3"
@@ -12,7 +12,7 @@ function fnMontarTabelaProduto(produto) {
 
             <td class="py-2 text-center align-middle">${produto.titulo.substring(0, 20)}</td>
 
-            <td class="py-2 text-center align-middle">${produto.descricao.substring(0, 50)}...</td>
+            <td class="py-2 text-center align-middle">${produto.descricao ? produto.descricao.substring(0, 50) : ''}...</td>
 
             <td class="py-2 text-center align-middle">${produto.categoria}</td>
 
@@ -30,9 +30,16 @@ function fnMontarTabelaProduto(produto) {
                         <i class="bi bi-pencil-square text-success"></i>
                     </a>        
 
-                    <button type="button" class="btn">
+                    <button 
+                        type="button" 
+                        class="btn"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#deleteModal"
+                        onclick="setProdutoParaExcluir(${produto.id})" ,
+                        event.target
+                    >
                         <i class="bi bi-trash text-danger"></i>
-                    </button>        
+                    </button>       
                 </div>
             </td>
         </tr>
@@ -40,6 +47,19 @@ function fnMontarTabelaProduto(produto) {
 
     document.getElementById("lista-produtos").innerHTML += tabela
 }
+
+let produtoSelecionado = null
+
+function setProdutoParaExcluir(id) {
+    produtoSelecionado = id
+}
+
+document.getElementById("btnConfirmarDelete")
+    .addEventListener("click", function () {
+        if (produtoSelecionado !== null) {
+            fnExcluirProduto(produtoSelecionado)
+        }
+    })
 
 const formatador = new Intl.NumberFormat('pt-BR', {
     style: 'currency',

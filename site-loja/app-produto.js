@@ -13,14 +13,13 @@ function fnCarregarDados() {
 
     const parametros = new URLSearchParams(window.location.search)
     const id = parametros.get('id') + "/"
-    fetch('http://localhost:3000/produtos/' + id, { method: 'GET' })
+    fetch('http://localhost:3000/produto/' + id, { method: 'GET' })
         .then(resposta => resposta.json())
         .then((produtos) => {
             produtos.forEach(produto => {
-                fnMontarCardProduto(produto)
+                fnMontarProduto(produto)
             });
         })
-
         .catch(erro => console.log(erro.message))
 }
 

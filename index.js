@@ -104,7 +104,6 @@ app.post("/produtos/", function (req, res) {
             res.json(erro);
         }
         res.send(resultado.insertId)
-
     });
 })
 
@@ -115,6 +114,30 @@ app.get("/produto/:id", function (req, res) {
         function (erro, dados, campos) {
             res.json(dados)
         })
+})
+
+// Update = [ PUT ] /produto/:id
+app.put("/produto/:id", function (req, res) {
+    const id = req.params.id
+    const data = req.body
+
+    conexao.query(`UPDATE produtos set ? where id = ${id}`, [data], function (erro, resultado) {
+        if (erro) {
+            res.send(erro)
+        }
+        res.send({ "status": 200, "message": "Atualizado com sucesso!" })
+    })
+})
+
+// Delete - [ DELETE ] /produto/:id
+app.delete("/produto/:id", function (req, res) {
+    const id = req.params.id
+    conexao.query(`delete from produtos where id = ${id}`, function (erro, resultado) {
+        if (erro) {
+            res.send(erro)
+        }
+        res.json({ "status": 200, "message": "Excluído com sucesso!" })
+    })
 })
 
 app.get("/unidades", function (req, res) {
